@@ -10,7 +10,7 @@ public class Solution {
         for(int i=0;i<n;i++){
             sum+=arr[i];
             // first check the sum goes negative or not
-            // if sum is negative then sum resets to 0
+            // if sum is negative then sum resets to 0 
             if(sum<0){
                 sum=0;
             }
