@@ -25,6 +25,7 @@ public class Solution{
             slow = arr.get(slow);
             fast = arr.get(fast);
         }
+        // return the slow variable
         return slow;
 
     }
