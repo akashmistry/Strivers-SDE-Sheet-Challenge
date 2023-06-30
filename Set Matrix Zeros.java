@@ -1,48 +1,49 @@
-class Solution {
-    public void setZeroes(int[][] matrix) {
+import java.io.*;
+import java.util.* ;
+
+public class Solution {
+    public static void setZeros(int matrix[][]) {
+        // Write your code here..
         int n = matrix.length;
         int m = matrix[0].length;
-
-        int col0 = 1; //so the overlaping hashed array in the matrix dont collide
-
-        for(int i = 0;i<n;i++){
+        int col=1;
+        for(int i =0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(matrix[i][j]==0){
-                    // mark the ith row
-                    matrix[i][0]=0;
-                    // mark the jth col
-                    // if condition to mark the col0 variable
-                    if(j!=0){
-                        // 
-                        matrix[0][j]=0;
+                    // if we encounter the zero then
+                    // we will mark the row to 0
+                    matrix[i][0] = 0;
+                    if(j==0){
+                        // as the row and col overlap so here we take another col variable
+                        // as the column is zero then mark the col variable
+                        col=0;
                     }
                     else{
-                        // mark the outer overlap variable
-                        col0=0;
+                        // if the col is not 0 then we will mark the col indexes
+                        matrix[0][j]=0;
                     }
                 }
             }
         }
-
-        // traverse the array except the hashed row and col
-        // mark all the traversed array zero except the hashed row and col
+        // traverse the matrix but without traversing the dummy arrays
         for(int i=1;i<n;i++){
             for(int j=1;j<m;j++){
+                // check if the row or col is 0 
+                // if yes then mark the matrix of i and j to 0
                 if(matrix[i][j]!=0){
-                    if(matrix[i][0] == 0 || matrix[0][j]==0){
+                    if(matrix[0][j]==0 || matrix[i][0]==0){
                         matrix[i][j]=0;
                     }
                 }
             }
         }
-        // mark zeros to the on the hashed array itself
+        // now we will traver the dummy array in the matrix itself
         if(matrix[0][0]==0){
-            for(int j=0;j<m;j++) matrix[0][j] = 0;
+            for(int j=0;j<m;j++) matrix[0][j]=0;
         }
-
-        if(col0==0){
+        if(col==0){
             for(int i=0;i<n;i++) matrix[i][0]=0;
         }
-
     }
+
 }
