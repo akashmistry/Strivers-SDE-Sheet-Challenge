@@ -32,6 +32,8 @@ public class Solution
         // Write your code here.
         Node slow = head;
         Node fast = head;
+        // checking fast.next!=null because if the fast element
+        // has reached the last element so its next ptr will be null
         while(fast!=null && fast.next!=null){
             slow = slow.next;
             fast = fast.next.next;
