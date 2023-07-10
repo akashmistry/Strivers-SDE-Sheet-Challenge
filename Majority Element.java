@@ -15,8 +15,16 @@ class Solution {
                 count--;
             }
         }
-        // as majority element exists in the array
-        // we do not check again on the array
-        return majElement;
+		//if we are not sure if majority element exists so we iterate and check again
+        int count1 = 0;
+        for(int i=0;i<n;i++){
+            if(majElement == nums[i]){
+                count1++;
+            }
+        }
+        if(count1>(n/2)){
+            return majElement;
+        }
+        return -1;
     }
 }
